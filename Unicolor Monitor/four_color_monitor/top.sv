@@ -10,36 +10,37 @@ module top (
     output logic [7:0] VGA_R,
     output logic [7:0] VGA_G,
     output logic [7:0] VGA_B,
-    output logic VGA_SYNC_N,
-    output logic VGA_BLANK_N,
+
+    output logic VGA_SYNC_N, // sync when 0
+    output logic VGA_BLANK_N, // output data when 1
+
     output logic VGA_HS,
     output logic VGA_VS,
     );
 
     // PLL
     logic clk_25; // 25 MHz
-    clk25 set_clock (
+    clk25 PLL (
         .clk(CLOCK_50),
         .n_rst(TD_RESET_N),
         .clk_25(VGA_CLK)
     );
 
     // VGA Controller
-    logic video_on;
     logic [9:0] horizontal_num;
-    vga_controller control (
+    vga_controller VGA_CNT (
         .clk_25(VGA_CLK),
         .n_rst(TD_RESET_N),
         .hsync(VGA_HS),
         .vsync(VGA_VS),
-        .video_on(video_on)
+        .synch(VGA_SYNC_N),
+        .video_on(VGA_BLANK_N),
         .horizontal_num(horizontal_num)
     );
 
     // Output
-    four_color monitor (
+    four_color MONITOR (
         .clk_25(VGA_CLK),
-        .load_enable(video_on),
         .horizontal_num(horizontal_num),
         .red(VGA_R),
         .green(VGA_G),
