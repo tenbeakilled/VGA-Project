@@ -33,7 +33,11 @@ logic [9:0] pixel_y;
 logic [9:0] next_pixel_x;
 logic [9:0] next_pixel_y;
 logic next_video_on;
+reg [23:0] pixel_memory [0:307199]; // each pixel has 24-bit data
 
+initial begin
+    $readmemh("image_data.mif", pixel_memory); // .mif 파일에서 데이터 로드
+end
 always_ff @(posedge clk_25, negedge n_rst) begin
     if(!n_rst) begin
         pixel_x <= '0;
@@ -41,6 +45,7 @@ always_ff @(posedge clk_25, negedge n_rst) begin
         video_on <= 0;
         vsync <= 0;
         hsync <= 0;
+        pixel_data <= 24'b0; // not sure whether this should be registered
     end
     else begin
         pixel_x <= next_pixel_x;
@@ -48,16 +53,8 @@ always_ff @(posedge clk_25, negedge n_rst) begin
         video_on <= next_video_on;
         vsync <= next_vsync;
         hsync <= next_hsync;
+        pixel_data <= pixel_memory[pixel_y * HVID + pixel_x];
     end
-end
-
-reg [23:0] pixel_memory [0:307199]; // each pixel has 24-bit data
-initial begin
-    $readmemh("image_data.mif", pixel_memory); // .mif 파일에서 데이터 로드
-end
-
-always_comb begin
-    pixel_data = pixel_memory[pixel_y * HVID + pixel_x];
 end
 
 always_comb begin
@@ -71,8 +68,4 @@ always_comb begin
     next_hsync = (next_pixel_x >= HSYNC_BEGIN && next_pixel_x < HSYNC_END) ? 1 : 0;
     next_vsync = (next_pixel_y >= VSYNC_BEGIN && next_pixel_y < VSYNC_END) ? 1 : 0;
 end
-
-always_comb begin
-end
-
 endmodule
