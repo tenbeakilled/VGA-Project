@@ -1,11 +1,15 @@
 module clk25 (
     input logic clk,
+    input logic n_rst,
     output logic clk_25
 );
-    initial begin
-        clk_25 = 0;
+
+always_ff @(posedge clk, negedge n_rst) begin
+    if(!n_rst) begin
+        clk_25 <= 0;
     end
-    always_ff @(posedge clk) begin
+    else begin
         clk_25 <= ~clk_25;
     end
+end
 endmodule
