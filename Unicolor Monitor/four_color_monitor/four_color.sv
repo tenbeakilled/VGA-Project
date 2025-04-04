@@ -2,6 +2,7 @@ module four_color #(
     parameter HVID = 640
 ) (
     input logic clk_25,
+    input logic n_rst,
     input logic load_enable,
     input logic [9:0] horizontal_num,
     output logic [7:0] red,
@@ -12,8 +13,8 @@ module four_color #(
 logic [7:0] next_red;
 logic [7:0] next_green;
 logic [7:0] next_blue;
-always_ff @(posedge clk_25) begin
-    if(load_enable) begin // White Screen Initially
+always_ff @(posedge clk_25, negedge n_rst) begin
+    if(!n_rst) begin // White Screen Initially
         red <= 8'b0;
         green <= 8'b0;
         blue <= 8'b0;
