@@ -29,22 +29,22 @@ always_comb begin
     if(horizontal_num < 10'd160) begin // First Block
         next_red = 8'hFF;
         next_green = 8'h0;
-        next_red = 8'h0;
+        next_blue = 8'h0;
     end
     else if(horizontal_num < 10'd320) begin // Second Block
         next_red = 8'h0;
         next_green = 8'hFF;
-        next_red = 8'h0;
+        next_blue = 8'h0;
     end
     else if(horizontal_num < 10'd480) begin // Third Block
         next_red = 8'h0;
         next_green = 8'h0;
-        next_red = 8'hFF;
+        next_blue = 8'hFF;
     end
     else begin // Fourth Block
         next_red = 8'hFF;
         next_green = 8'hFF;
-        next_red = 8'hFF;
+        next_blue = 8'hFF;
     end
 end
 endmodule
