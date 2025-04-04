@@ -9,6 +9,6 @@ initial begin
     $readmemh("image_data.mif", pixel_memory);
 end
 
-assign pixel_data = pixel_memory[pixel_y * 640 + pixel_x]; // pixel_y * 640 + pixel_x
+assign pixel_data = pixel_memory[pixel_y * 10'd640 + pixel_x]; // pixel_y * 640 + pixel_x
 
 endmodule

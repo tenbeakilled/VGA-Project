@@ -1,34 +1,38 @@
 `default_nettype none
 
 module top (
-    input logic clk, // 50 MHz
-    input logic n_rst,
+    input logic CLOCK_50, // 50 MHz
+    input logic TD_RESET_N,
 
-    output logic clk_25,
-    output logic [7:0] vga_r,
-    output logic [7:0] vga_g,
-    output logic [7:0] vga_b,
-    output logic vga_hs,
-    output logic vga_vs,
+    output logic VGA_CLK,
+    output logic [7:0] VGA_R,
+    output logic [7:0] VGA_G,
+    output logic [7:0] VGA_B,
+
+    output logic VGA_SYNC_N, // sync when 0
+    output logic VGA_BLANK_N, // output data when 1
+
+    output logic VGA_HS,
+    output logic VGA_VS,
     );
 
     // PLL
-    clk25 set_clock (
-        .clk(clk),
-        .n_rst(n_rst),
-        .clk_25(clk_25)
+    clk25 PLL (
+        .clk(CLOCK_50),
+        .n_rst(TD_RESET_N),
+        .clk_25(VGA_CLK)
     );
 
     // VGA Controller
     logic video_on;
     logic [9:0] x_coordinate;
     logic [9:0] y_coordinate;
-    vga_controller control (
-        .clk_25(clk_25),
-        .n_rst(n_rst),
-        .hsync(vga_hs),
-        .vsync(vga_vs),
-        .video_on(video_on),
+    vga_controller VGA_CNT (
+        .clk_25(VGA_CLK),
+        .n_rst(TD_RESET_N),
+        .hsync(VGA_HS),
+        .vsync(VGA_VS),
+        .video_on(VGA_BLANK_N),
         .x_coordinate(x_coordinate),
         .y_coordinate(y_coordinate)
     );
@@ -41,12 +45,12 @@ module top (
         .pixel_data(pixel_data)
     );
 
-    load_image monitor (
+    load_image MONITOR (
         .load_enable(video_on),
         .pixel_data(pixel_data),
-        .red(vga_r),
-        .green(vga_g),
-        .blue(vga_b)
+        .red(VGA_R),
+        .green(VGA_G),
+        .blue(VGA_B)
     );
     
 endmodule
