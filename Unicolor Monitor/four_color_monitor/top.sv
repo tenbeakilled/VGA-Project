@@ -15,7 +15,7 @@ module top (
     output logic VGA_BLANK_N, // output data when 1
 
     output logic VGA_HS,
-    output logic VGA_VS,
+    output logic VGA_VS
     );
 
     // PLL
