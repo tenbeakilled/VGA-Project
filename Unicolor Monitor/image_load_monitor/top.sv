@@ -15,6 +15,7 @@ module top (
     // PLL
     clk25 set_clock (
         .clk(clk),
+        .n_rst(n_rst),
         .clk_25(clk_25)
     );
 
