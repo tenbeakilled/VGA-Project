@@ -1,6 +1,6 @@
 module clk25 (
-    input logic clk,
-    input logic n_rst,
+    input logic CLOCK_50,
+    input logic TD_RESET_N,
     output logic clk_25
 );
 logic next_clk;

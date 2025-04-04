@@ -2,7 +2,7 @@ module four_color #(
     parameter HVID = 640
 ) (
     input logic clk_25,
-    input logic n_rst,
+    input logic TD_RESET_N,
     input logic load_enable,
     input logic [9:0] horizontal_num,
     output logic [7:0] red,
