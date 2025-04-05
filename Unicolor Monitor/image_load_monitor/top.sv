@@ -15,7 +15,7 @@ module top (
     output logic VGA_BLANK_N, // output data when 1
 
     output logic VGA_HS,
-    output logic VGA_VS,
+    output logic VGA_VS
     );
 
     // PLL
@@ -41,10 +41,12 @@ module top (
 
     // Reading Memory
     logic [23:0] pixel_data;
-    memory MEM (
-        .pixel_x(x_coordinate),
-        .pixel_y(y_coordinate),
-        .pixel_data(pixel_data)
+    logic [18:0] address;
+    assign address = y_coordinate * 19'd640 + x_coordinate;
+    mif_to_hex MEM (
+    .address(address),
+    .clock(VGA_CLK),
+    .q(pixel_data)
     );
 
     // Print on Monitor

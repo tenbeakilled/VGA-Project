@@ -12,8 +12,8 @@ module vga_controller #(
     input logic n_rst,
     output logic hsync,
     output logic vsync,
-    output logic video_on // high when active display region
-    output logic synch;
+    output logic video_on, // high when active display region
+    output logic synch,
     output logic [9:0] x_coordinate,
     output logic [9:0] y_coordinate
 );
