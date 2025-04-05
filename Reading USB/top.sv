@@ -42,7 +42,7 @@ module top (
     // Reading Memory
     logic [23:0] pixel_data;
     logic [18:0] address;
-    assign address = y_coordinate * 19'd640 + x_coordinate;
+    assign address = y_coordinate * 640 + x_coordinate;
     mif_to_hex MEM (
     .address(address),
     .clock(VGA_CLK),
