@@ -1,9 +1,11 @@
 `default_nettype none
 
 module top (
+    // Input
     input logic CLOCK_50, // 50 MHz
     input logic TD_RESET_N,
 
+    // Output
     output logic VGA_CLK,
     output logic [7:0] VGA_R,
     output logic [7:0] VGA_G,
@@ -24,7 +26,6 @@ module top (
     );
 
     // VGA Controller
-    logic video_on;
     logic [9:0] x_coordinate;
     logic [9:0] y_coordinate;
     vga_controller VGA_CNT (
@@ -33,11 +34,12 @@ module top (
         .hsync(VGA_HS),
         .vsync(VGA_VS),
         .video_on(VGA_BLANK_N),
+        .synch(VGA_SYNC_N),
         .x_coordinate(x_coordinate),
         .y_coordinate(y_coordinate)
     );
 
-    // Output
+    // Reading Memory
     logic [23:0] pixel_data;
     memory MEM (
         .pixel_x(x_coordinate),
@@ -45,12 +47,6 @@ module top (
         .pixel_data(pixel_data)
     );
 
-    load_image MONITOR (
-        .load_enable(video_on),
-        .pixel_data(pixel_data),
-        .red(VGA_R),
-        .green(VGA_G),
-        .blue(VGA_B)
-    );
-    
+    // Print on Monitor
+    assign {VGA_R, VGA_G, VGA_B} = pixel_data;
 endmodule

@@ -38,7 +38,7 @@ module top (
         .horizontal_num(horizontal_num)
     );
 
-    // Output
+    // Print on Monitor
     four_color MONITOR (
         .clk_25(VGA_CLK),
         .horizontal_num(horizontal_num),

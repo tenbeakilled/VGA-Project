@@ -13,6 +13,7 @@ module vga_controller #(
     output logic hsync,
     output logic vsync,
     output logic video_on // high when active display region
+    output logic synch;
     output logic [9:0] x_coordinate,
     output logic [9:0] y_coordinate
 );
@@ -53,6 +54,8 @@ always_ff @(posedge clk_25, negedge n_rst) begin
 end
 
 always_comb begin
+    synch = 1'b1;
+    
     if(pixel_x >= HC_MAX - 1) next_pixel_x = 0;
     else next_pixel_x = pixel_x + 1;
 
