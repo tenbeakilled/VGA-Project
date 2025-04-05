@@ -1,18 +1,6 @@
-# Project Name
+# VGA Output
 
 ## Introduction
-Provide a brief description of your project. Explain what the project is about, why it's important, and what problem it solves.
+This project focuses on implementing a custom VGA controller using an FPGA, specifically the AFTx07 chip developed by Purdue SoCET Lab. The goal is to generate VGA video output from an FPGA system, which can be used for various display applications. The project involves the integration of a custom VGA controller, RAM, and DACs to produce video signals that are compatible with VGA monitors. The system is designed to store pixel data in RAM, retrieve it efficiently, and output it as a video signal.
 
-For example:
-This project is a [type of project], designed to [what the project does]. It aims to [goal of the project] and helps [target audience/beneficiaries].
-
-## Features
-- Feature 1: Describe what this feature does.
-- Feature 2: Describe what this feature does.
-- Feature 3: Describe what this feature does.
-
-## Installation
-Provide installation instructions if needed. For example:
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/your-project.git
+The project aims to provide a hands-on experience with FPGA-based video output, enhancing the understanding of how digital systems interface with display technology. In the future, the project may be extended to support HDMI or USB video interfaces for broader compatibility.
