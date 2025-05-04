@@ -8,10 +8,6 @@ Two primary experiments were conducted:
 ## Background:
 The **Video Graphics Array (VGA)** is a widely-used analog video standard originally developed by IBM. It transmits video signals using RGB lines along with synchronization signals: **HSYNC** (horizontal sync) and **VSYNC** (vertical sync).
 
-## Reference:
-- https://www.youtube.com/watch?v=Ea_KIhRqLkQ&t=390s - Explanation for basic concept of VGA
-- https://github.com/johnwinans/Verilog-Examples/blob/main/vga/sync/vgasync.v - utilized VGA controller from this open source
-
 ## Files for this project:
 #### VGA-Project/
 - DE2-115 Pin Assignments.csv - pin assignment sheet
@@ -28,3 +24,6 @@ The **Video Graphics Array (VGA)** is a widely-used analog video standard origin
 
 <img src="img/gray_image.png" alt="Grayscale Output" width="300"/>
 
+## Reference:
+- https://www.youtube.com/watch?v=Ea_KIhRqLkQ&t=390s - Explanation for basic concept of VGA
+- https://github.com/johnwinans/Verilog-Examples/blob/main/vga/sync/vgasync.v - utilized VGA controller from this open source
