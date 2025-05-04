@@ -1,20 +1,18 @@
 # A guide to the project files for the VGA Output System
-
-## contributing to this project code was :
-- Seongbin Lee
-
-## Project Overview :
-This project focuses on enabling VGA video output using the AFTx07 development board. The goal is to render graphics in real time using a SystemVerilog-based VGA controller and test it on the DE2-115 FPGA. The final objective is to support software-driven rendering on AFTx07 through an AHB-Lite-compatible VGA subordinate module. 
+This project focuses on enabling VGA image output using the AFTx07 development board. The goal is to render graphics in real time using a SystemVerilog-based VGA controller and test it on the DE2-115 FPGA.
 
 Two primary experiments were conducted:
 - A "Four Color Monitor" project that displays four colored boxes
 - A "Grayscale Image Output" project that loads and renders an image from internal memory
 
-These serve as the foundation for a modular VGA system that future SoCET teams can expand with DMA support, graphical libraries, or framebuffer-driven applications.
+## Background:
+The **Video Graphics Array (VGA)** is a widely-used analog video standard originally developed by IBM. It transmits video signals using RGB lines along with synchronization signals: **HSYNC** (horizontal sync) and **VSYNC** (vertical sync).
 
-## All files for this project can be found in
-- https://github.com/tenbeakilled/VGA-Project
+## Reference:
+- https://www.youtube.com/watch?v=Ea_KIhRqLkQ&t=390s - Explanation for basic concept of VGA
+- https://github.com/johnwinans/Verilog-Examples/blob/main/vga/sync/vgasync.v - utilized VGA controller from this open source
 
+## Files for this project:
 #### VGA-Project/
 - DE2-115 Pin Assignments.csv - pin assignment sheet
 
