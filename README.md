@@ -25,7 +25,7 @@ The VGA controller generates horizontal and vertical sync pulses along with RGB 
 ## Implementation Details:
 
 ### VGA Controller Logic
-- Pixel clock: 25 MHz for 640x480 @ 60Hz
+- Pixel clock: 25 MHz for 640x480
 - Horizontal timing: sync pulse, back porch, visible area, front porch
 - Vertical timing: similar structure
 - RGB data output is synchronized with visible region
@@ -35,10 +35,15 @@ The VGA controller generates horizontal and vertical sync pulses along with RGB 
 - Outputs red, green, blue, and white based on (x, y) position
 
 ```c
-assign red   = (x < 320 && y < 240);
-assign green = (x >= 320 && y < 240);
-assign blue  = (x < 320 && y >= 240);
-assign white = (x >= 320 && y >= 240);
+if (horizontal_num < 160) begin
+    red = 8'hFF; green = 8'h00; blue = 8'h00; // Red
+end else if (horizontal_num < 320) begin
+    red = 8'h00; green = 8'hFF; blue = 8'h00; // Green
+end else if (horizontal_num < 480) begin
+    red = 8'h00; green = 8'h00; blue = 8'hFF; // Blue
+end else begin
+    red = 8'hFF; green = 8'hFF; blue = 8'hFF; // White
+end
 ```
 
 ### Grayscale Image Output
