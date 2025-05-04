@@ -47,6 +47,11 @@ assign white = (x >= 320 && y >= 240);
 - Output grayscale value on all RGB channels
 
 ## How to Test
+### Hardware Setup
+- FPGA: DE2-115 (Cyclone IV)
+- Output: VGA monitor
+- Clock: 50 MHz
+- Tools: Quartus Prime
 
 ## Pin Assignments
 
