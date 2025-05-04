@@ -6,7 +6,23 @@ Two primary experiments were conducted:
 - A "Grayscale Image Output" project that loads and renders an image from internal memory
 
 ## Background:
-The **Video Graphics Array (VGA)** is a widely-used analog video standard originally developed by IBM. It transmits video signals using RGB lines along with synchronization signals: **HSYNC** (horizontal sync) and **VSYNC** (vertical sync).
+To fully understand this project, familiarity with the following is helpful:
+- VGA protocol: HSYNC/VSYNC, RGB signaling, timing
+- FPGA-based RTL design: System Verilog, module hierarchy, and signal timing
+- Digital video concepts: Framebuffers
+- Memory-mapped pixel storage: Using internal ROM to hold pixel values
+
+## System Architecture:
+
+<img src="img/system_RTL.png" alt="RTL Diagram" width="500"/>
+
+## Implementation Details:
+
+## How to Test
+
+## Pin Assignments
+
+
 
 ## Files for this project:
 #### VGA-Project/
@@ -24,9 +40,6 @@ The **Video Graphics Array (VGA)** is a widely-used analog video standard origin
 
 <img src="img/gray_image.png" alt="Grayscale Output" width="300"/>
 
-## Contributor of this project:
-- Seongbin Lee
-
-## Reference:
+## Acknowledgements & References:
 - https://www.youtube.com/watch?v=Ea_KIhRqLkQ&t=390s - Explanation for basic concept of VGA
 - https://github.com/johnwinans/Verilog-Examples/blob/main/vga/sync/vgasync.v - utilized VGA controller from this open source
