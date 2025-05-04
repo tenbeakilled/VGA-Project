@@ -18,13 +18,13 @@ The **Video Graphics Array (VGA)** is a widely-used analog video standard origin
 
 #### VGA-Project/Four Color Monitor/
 - top.sv - top level RTL code for Four Color Monitor Output project
-- Below is an expected output of this code: 
+- Expected output of this code: 
 
 <img src="img/four_color.png" alt="Four Color Monitor Output" width="300"/>
 
 #### VGA-Project/Grayscale Image (Internal Memory)/
 - top.sv - top level code for Grayscale Image Output project
-- Below is an expected output of this code: 
+- Expected output of this code: 
 
 <img src="img/gray_image.png" alt="Grayscale Output" width="300"/>
 
