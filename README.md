@@ -13,14 +13,14 @@ To fully understand this project, familiarity with the following is helpful:
 - Memory-mapped pixel storage: Using internal ROM to hold pixel values
 
 ## System Architecture:
-- Input: Clock (e.g., 25 MHz), reset
-- Memory: Internal ROM or preloaded RAM for image storage
+- Input: Clock, reset
+- Memory: Internal ROM for image storage
 - VGA Controller: Generates sync signals and RGB output
 - Output: VGA port to monitor (DE2-115 pin assignments)
 
-The VGA controller generates horizontal and vertical sync pulses along with RGB output to display either color blocks or grayscale image data stored in internal memory.
-
 <img src="img/system_RTL.png" alt="RTL Diagram" width="500"/>
+
+The VGA controller generates horizontal and vertical sync pulses along with RGB output to display either color blocks or grayscale image data stored in internal memory.
 
 ## Implementation Details:
 
@@ -51,15 +51,21 @@ end
 - x, y coordinate used to index into ROM
 - Output grayscale value on all RGB channels
 
+```c
+assign address = y_coordinate * 640 + x_coordinate;
+    mem MEM (
+    .address(address),
+    .clock(VGA_CLK),
+    .q(pixel_data)
+    );
+```
+
 ## How to Test
 ### Hardware Setup
 - FPGA: DE2-115 (Cyclone IV)
 - Output: VGA monitor
 - Clock: 50 MHz
 - Tools: Quartus Prime
-
-## Pin Assignments
-
 
 
 ## Files for this project:
