@@ -1,4 +1,4 @@
-# A guide to the project files for the VGA Output System.
+# A guide to the project files for the VGA Output System
 
 ## Team members contributing to this project were :
 - Seongbin Lee
