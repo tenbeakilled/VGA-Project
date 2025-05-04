@@ -24,6 +24,9 @@ The **Video Graphics Array (VGA)** is a widely-used analog video standard origin
 
 <img src="img/gray_image.png" alt="Grayscale Output" width="300"/>
 
+## Contributor of this project:
+- Seongbin Lee
+
 ## Reference:
 - https://www.youtube.com/watch?v=Ea_KIhRqLkQ&t=390s - Explanation for basic concept of VGA
 - https://github.com/johnwinans/Verilog-Examples/blob/main/vga/sync/vgasync.v - utilized VGA controller from this open source
