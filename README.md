@@ -67,7 +67,6 @@ assign address = y_coordinate * 640 + x_coordinate;
 - Clock: 50 MHz
 - Tools: Quartus Prime
 
-
 ## Files for this project:
 #### VGA-Project/
 - DE2-115 Pin Assignments.csv - pin assignment sheet
