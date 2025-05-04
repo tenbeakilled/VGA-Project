@@ -13,10 +13,38 @@ To fully understand this project, familiarity with the following is helpful:
 - Memory-mapped pixel storage: Using internal ROM to hold pixel values
 
 ## System Architecture:
+- Input: Clock (e.g., 25 MHz), reset
+- Memory: Internal ROM or preloaded RAM for image storage
+- VGA Controller: Generates sync signals and RGB output
+- Output: VGA port to monitor (DE2-115 pin assignments)
+
+The VGA controller generates horizontal and vertical sync pulses along with RGB output to display either color blocks or grayscale image data stored in internal memory.
 
 <img src="img/system_RTL.png" alt="RTL Diagram" width="500"/>
 
 ## Implementation Details:
+
+### VGA Controller Logic
+- Pixel clock: 25 MHz for 640x480 @ 60Hz
+- Horizontal timing: sync pulse, back porch, visible area, front porch
+- Vertical timing: similar structure
+- RGB data output is synchronized with visible region
+
+### Four Color Monitor
+- Divides screen into four quadrants
+- Outputs red, green, blue, and white based on (x, y) position
+
+```c
+assign red   = (x < 320 && y < 240);
+assign green = (x >= 320 && y < 240);
+assign blue  = (x < 320 && y >= 240);
+assign white = (x >= 320 && y >= 240);
+```
+
+### Grayscale Image Output
+- Image stored in ROM initialized with pixel brightness
+- x, y coordinate used to index into ROM
+- Output grayscale value on all RGB channels
 
 ## How to Test
 
